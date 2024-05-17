@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme de gestion des tâches</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .background{
+            background-color: #C0CCE9;;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark m-1">
+        <a class="navbar-brand text-white m-2" href="index.html">Gestion des taches</a>
+        <button class="navbar-toggler m-2" type="button" id="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        </div>
+    </nav>
+    
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="index.html"><img class="img-fluid"  src="Employer-removebg-preview.png" width="350" height="20" alt="employees"> </a>
+        <h3 class="text-white text-center mb-5">Plateforme de gestion des tâches</h3>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Tableau de Bord</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="addtask.html">Ajouter une tâches</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tasklist.html">Liste des tâches </a>
+            </li>
+        </ul>
+    </div>
+
+ 
+    <div class="container text-center mt-5 rounded-5 background">
+        <div class="row">
+            <div class="col-6 mt-2 mb-2">
+                <h1 class="text-dark text-center  fs-4">Ajouter des tâches</h1>
+            </div>
+            <div class="col-6 text-center mt-2 mb-2 ">
+            <!-- Bouton pour ouvrir la modale -->
+                <button type="button" class="btn btn-success rounded-5 btn-sm btn-block" data-bs-toggle="modal" data-bs-target="#taskModal" >
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>  Ajouter une Tâche
+                </button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container mt-5">
+        <div class="row ">
+            <div class="col-md-12 text-center ">
+                <h2 class="text-danger">Objectifs du Projet :</h2>
+                <p>
+                    <strong>Maîtrise des Opérations Avancées en JavaScript :</strong> Utiliser des tableaux, des chaînes de caractères et des fonctions avancées pour développer des scripts JavaScript fonctionnels et complexes.
+                </p>
+                <p>
+                    <strong>Utilisation des Promesses :</strong> Comprendre les promesses pour gérer les opérations asynchrones de manière efficace et améliorer la réactivité des applications web.
+                </p>
+                <p>
+                    <strong>Programmation Orientée Objet en JavaScript :</strong> Comprendre les concepts de programmation orientée objet en JavaScript et les appliquer pour créer des applications bien structurées et évolutives.
+                </p>
+                <h2>Fonctionnalités :</h2>
+                <p>
+                    <strong>Création de Tâches :</strong> Permettre aux utilisateurs de créer de nouvelles tâches en spécifiant des détails tels que le titre, la description et la priorité.
+                </p>
+                <p>
+                    <strong>Organisation des Tâches :</strong> Offrir la possibilité aux utilisateurs d'organiser leurs tâches par priorité, date d'échéance ou état d'avancement.
+                </p>
+                <p>
+                    <strong>Modification des Tâches :</strong> Autoriser les utilisateurs à modifier les détails des tâches existantes, y compris le titre, la description, la priorité et la date d'échéance.
+                </p>
+                <p>
+                    <strong>Suppression de Tâches :</strong> Permettre aux utilisateurs de supprimer les tâches existantes.
+                </p>
+                <p>
+                    <strong>Visualisation des Progrès :</strong> Fournir des graphiques et des tableaux de bord pour permettre aux utilisateurs de visualiser les progrès réalisés sur leurs tâches.
+                </p>
+            </div>
+        </div>
+    </div>
+
+<!-- Modale pour ajouter une tâche -->
+<div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header bg-success">
+                <h5 class="modal-title" id="taskModalLabel">Ajouter une Tâche</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulaire de création de tâche -->
+                <form id="taskForm" novalidate>
+                    <div class="mb-3">
+                        <label for="taskTitle" class="form-label">Titre :</label>
+                        <input type="text" class="form-control" id="taskTitle" name="taskTitle" required>
+                        <div class="invalid-feedback">Veuillez saisir un titre valide.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="taskDescription" class="form-label">Description :</label>
+                        <textarea class="form-control" id="taskDescription" name="taskDescription" rows="3" required></textarea>
+                        <div class="invalid-feedback">Veuillez saisir une description.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="taskPriority" class="form-label">Priorité :</label>
+                        <select class="form-select" id="taskPriority" name="taskPriority" required>
+                            <option value="Basse">Basse</option>
+                            <option value="Moyenne">Moyenne</option>
+                            <option value="Haute">Haute</option>
+                        </select>
+                        <div class="invalid-feedback">Veuillez sélectionner une priorité.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="taskDeadline" class="form-label">Date d'échéance :</label>
+                        <input type="date" class="form-control" id="taskDeadline" name="taskDeadline" required>
+                        <div class="invalid-feedback">Veuillez sélectionner une date d'échéance.</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-success" onclick="taskManager.addTask()">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="tasks.js">  </script>
+   <script>
+    //gerer la sidebar en responsive
+    $(document).ready(function() {
+        $('#navbar-toggler').click(function() {
+            $('#sidebar').toggleClass('show');
+        });
+    });
+    
+   </script>
+</body>
+</html>
